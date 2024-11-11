@@ -39,7 +39,11 @@ const App = () => {
       : 0;
 
   useEffect(() => {
-    localStorage.setItem("feedback", JSON.stringify(feedback));
+    const handle = setTimeout(() => {
+      localStorage.setItem("feedback", JSON.stringify(feedback));
+    }, 500);
+
+    return () => clearTimeout(handle);
   }, [feedback]);
 
   return (
